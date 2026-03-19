@@ -1,0 +1,81 @@
+import type { Category } from '../types'
+
+export const categories: Category[] = [
+  {
+    id: 'foundations',
+    title: 'Foundations',
+    description: 'Understand AI-powered development, vibe coding, and the mental models behind building with AI',
+    icon: '◆',
+    order: 1,
+  },
+  {
+    id: 'tool-selection',
+    title: 'Tool Selection',
+    description: 'Choose the right AI coding tools — Cursor, Claude Code, Codex, OpenCode & more',
+    icon: '⚙',
+    order: 2,
+  },
+  {
+    id: 'cursor',
+    title: 'Building with Cursor',
+    description: 'Master Cursor IDE — rules, agent mode, MCP integration, and advanced workflows',
+    icon: '▸',
+    order: 3,
+  },
+  {
+    id: 'claude-code',
+    title: 'Building with Claude Code',
+    description: 'Terminal-first AI coding — CLAUDE.md, agentic workflows, and power-user techniques',
+    icon: '⌘',
+    order: 4,
+  },
+  {
+    id: 'prompting',
+    title: 'AI Prompting & PRDs',
+    description: 'Write better prompts, set up PRDs, and configure CLAUDE.md / Cursor Rules for consistent results',
+    icon: '✎',
+    order: 5,
+  },
+  {
+    id: 'design-to-code',
+    title: 'Design & Figma MCP',
+    description: 'Go from Figma designs to production code using MCP, design systems, and AI tools',
+    icon: '◫',
+    order: 6,
+  },
+  {
+    id: 'fullstack',
+    title: 'Full-Stack Building',
+    description: 'Build complete apps end-to-end — backend, database, auth, payments, and features',
+    icon: '⬡',
+    order: 7,
+  },
+  {
+    id: 'shipping',
+    title: 'Deploy & Ship',
+    description: 'Deploy to Vercel, set up domains, write docs, and launch your AI-powered product',
+    icon: '▲',
+    order: 8,
+  },
+  {
+    id: 'web-fundamentals',
+    title: 'Web Fundamentals',
+    description: 'JavaScript, React, Next.js, TypeScript, HTML/CSS, Tailwind — the building blocks',
+    icon: '{ }',
+    order: 9,
+  },
+  {
+    id: 'backend-db',
+    title: 'Backend & Databases',
+    description: 'Supabase, Node.js, APIs, and backend patterns for AI applications',
+    icon: '⛁',
+    order: 10,
+  },
+  {
+    id: 'git',
+    title: 'Git & Version Control',
+    description: 'Git basics, GitHub workflows, and collaboration fundamentals',
+    icon: '⎇',
+    order: 11,
+  },
+]
