@@ -9,12 +9,15 @@ interface ArticleCardProps {
 }
 
 const sourceColors: Record<string, string> = {
-  'Cursor Docs': 'text-accent-glow',
+  'Cursor Docs': 'text-accent',
   'Anthropic Docs': 'text-amber',
   'Vercel Docs': 'text-sky',
-  'OpenAI Docs': 'text-emerald',
-  GitHub: 'text-text',
   'Vercel Blog': 'text-sky',
+  'OpenAI Docs': 'text-peach',
+  GitHub: 'text-heading',
+  'Figma Blog': 'text-rose',
+  'MCP Docs': 'text-accent',
+  'Level Up Coding': 'text-amber',
 }
 
 export function ArticleCard({ article, isRead, onToggleRead, index }: ArticleCardProps) {
@@ -24,64 +27,68 @@ export function ArticleCard({ article, isRead, onToggleRead, index }: ArticleCar
   return (
     <div className={`group animate-fade-in-up ${staggerClass}`}>
       <div
-        className={`bg-surface-raised rounded-2xl border p-5 transition-all duration-300 hover:border-border-bright hover:-translate-y-1 hover:shadow-[0_8px_30px_-8px_rgba(139,92,246,0.12)] ${
-          isRead ? 'border-emerald/30' : 'border-border'
+        className={`relative bg-surface-raised rounded-2xl p-5 transition-colors duration-150 ${
+          isRead ? 'border border-accent/20' : 'border border-border hover:border-border-bright'
         }`}
       >
-        <div className="flex items-start justify-between gap-3 mb-3">
-          <div className="flex-1">
-            <div className="flex items-center gap-2 mb-2">
-              <span className={`text-[11px] font-mono font-medium ${sourceColor}`}>{article.source}</span>
-              <span className="text-border-bright">·</span>
-              <span className="text-[11px] text-muted font-mono">{article.readTime}</span>
-              {isRead && (
-                <span className="text-[10px] font-mono bg-emerald/15 text-emerald px-1.5 py-0.5 rounded flex items-center gap-1">
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                    <path d="M2 5L4 7L8 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  Read
-                </span>
-              )}
+        <div className={`absolute left-0 top-4 bottom-4 w-[2px] rounded-r-full transition-colors duration-150 ${isRead ? 'bg-accent/40' : 'bg-border-bright group-hover:bg-muted/30'}`} />
+
+        <div className="pl-3">
+          <div className="flex items-start justify-between gap-3 mb-3">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-2.5">
+                <span className={`text-[10px] font-mono font-semibold tracking-wide uppercase ${sourceColor}`}>{article.source}</span>
+                <span className="text-border-bright text-xs">·</span>
+                <span className="text-[10px] text-muted/60 font-mono">{article.readTime}</span>
+                {isRead && (
+                  <span className="text-[9px] font-mono font-semibold bg-accent/10 text-accent px-2 py-0.5 rounded-md flex items-center gap-1">
+                    <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                      <path d="M1.5 4L3 5.5L6.5 2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    Read
+                  </span>
+                )}
+              </div>
+              <a
+                href={article.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[14px] font-display font-semibold text-heading leading-snug hover:text-accent transition-colors block"
+              >
+                {article.title}
+              </a>
             </div>
-            <a
-              href={article.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[15px] font-semibold text-heading leading-snug hover:text-accent-glow transition-colors block"
+            <button
+              onClick={onToggleRead}
+              title={isRead ? 'Mark as unread' : 'Mark as read'}
+              className={`shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-colors duration-150 cursor-pointer ${
+                isRead
+                  ? 'bg-accent/12 text-accent hover:bg-accent/20'
+                  : 'bg-surface-hover text-muted hover:text-text'
+              }`}
             >
-              {article.title}
-            </a>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                {isRead ? (
+                  <path d="M3 7L6 10L11 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                ) : (
+                  <path d="M3 7L6 10L11 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.35" />
+                )}
+              </svg>
+            </button>
           </div>
-          <button
-            onClick={onToggleRead}
-            title={isRead ? 'Mark as unread' : 'Mark as read'}
-            className={`shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 cursor-pointer ${
-              isRead
-                ? 'bg-emerald/15 text-emerald hover:bg-emerald/25'
-                : 'bg-surface-hover text-muted hover:text-accent hover:bg-accent/10'
-            }`}
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              {isRead ? (
-                <path d="M4 8L7 11L12 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              ) : (
-                <path d="M4 8L7 11L12 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.4" />
-              )}
-            </svg>
-          </button>
-        </div>
 
-        <p className="text-sm text-muted leading-relaxed mb-4">{article.description}</p>
+          <p className="text-[12px] text-muted leading-relaxed mb-4">{article.description}</p>
 
-        <div className="flex items-center justify-between">
-          <div className="flex gap-1.5 flex-wrap">
-            {article.tags.slice(0, 3).map(tag => (
-              <span key={tag} className="text-[10px] font-mono text-muted/70 bg-surface px-2 py-0.5 rounded-md border border-border">
-                {tag}
-              </span>
-            ))}
+          <div className="flex items-center justify-between">
+            <div className="flex gap-1.5 flex-wrap">
+              {article.tags.slice(0, 3).map(tag => (
+                <span key={tag} className="text-[9px] font-mono text-muted/60 bg-surface-hover px-2 py-0.5 rounded-md">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <DifficultyBadge difficulty={article.difficulty} />
           </div>
-          <DifficultyBadge difficulty={article.difficulty} />
         </div>
       </div>
     </div>

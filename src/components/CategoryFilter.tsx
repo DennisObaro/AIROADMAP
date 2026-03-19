@@ -8,13 +8,13 @@ interface CategoryFilterProps {
 
 export function CategoryFilter({ categories, activeCategory, onCategoryChange }: CategoryFilterProps) {
   return (
-    <div className="flex gap-2 flex-wrap">
+    <div className="flex gap-1.5 flex-wrap">
       <button
         onClick={() => onCategoryChange(null)}
-        className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 cursor-pointer border ${
+        className={`px-3.5 py-1.5 rounded-lg text-[11px] font-medium transition-colors duration-150 cursor-pointer ${
           activeCategory === null
-            ? 'bg-accent/15 text-accent-glow border-accent/25'
-            : 'text-muted hover:text-text bg-surface-raised hover:bg-surface-hover border-border'
+            ? 'bg-accent/10 text-accent'
+            : 'text-muted hover:text-text bg-surface-raised hover:bg-surface-hover'
         }`}
       >
         All
@@ -23,13 +23,13 @@ export function CategoryFilter({ categories, activeCategory, onCategoryChange }:
         <button
           key={cat.id}
           onClick={() => onCategoryChange(cat.id)}
-          className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 cursor-pointer border ${
+          className={`px-3.5 py-1.5 rounded-lg text-[11px] font-medium transition-colors duration-150 cursor-pointer ${
             activeCategory === cat.id
-              ? 'bg-accent/15 text-accent-glow border-accent/25'
-              : 'text-muted hover:text-text bg-surface-raised hover:bg-surface-hover border-border'
+              ? 'bg-accent/10 text-accent'
+              : 'text-muted hover:text-text bg-surface-raised hover:bg-surface-hover'
           }`}
         >
-          <span className="mr-1.5 opacity-60">{cat.icon}</span>
+          <span className="mr-1 opacity-40">{cat.icon}</span>
           {cat.title}
         </button>
       ))}
