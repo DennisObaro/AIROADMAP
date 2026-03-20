@@ -231,6 +231,17 @@ export const articles: Article[] = [
     description: 'Understanding the Model Context Protocol and how it connects AI tools to data sources.',
   },
   {
+    id: 'a-design-stitch-x',
+    title: 'Stitch Masterclass for Beginners (full tutorial)',
+    url: 'https://x.com/jspujji/status/2034978670687969484',
+    source: 'X (@jspujji)',
+    readTime: '5 min',
+    categoryId: 'design-to-code',
+    difficulty: 'beginner',
+    tags: ['stitch', 'google', 'design-to-code', 'tutorial'],
+    description: 'Beginner-friendly masterclass on Google Stitch — from prompts to UI, in a full tutorial format on X.',
+  },
+  {
     id: 'a-design-smashing',
     title: 'Human Strategy In An AI-Accelerated Workflow',
     url: 'https://www.smashingmagazine.com/2026/03/human-strategy-ai-accelerated-workflow/',
@@ -580,6 +591,17 @@ export const articles: Article[] = [
     difficulty: 'beginner',
     tags: ['design', 'ai', 'graphic-design'],
     description: 'How AI is reshaping graphic design and what it means for creatives.',
+  },
+  {
+    id: 'a-web-codevolution-x',
+    title: 'Codevolution — post on X',
+    url: 'https://x.com/CodevolutionWeb/status/2034683638382506063',
+    source: 'Codevolution (X)',
+    readTime: '2 min',
+    categoryId: 'web-fundamentals',
+    difficulty: 'beginner',
+    tags: ['react', 'nextjs', 'typescript', 'x'],
+    description: 'Post from Codevolution on React, Next.js, TypeScript, and web dev tutorials — open on X for the full thread or link.',
   },
 
   // === ADDITIONAL SOURCES ===

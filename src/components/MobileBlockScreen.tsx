@@ -1,3 +1,27 @@
+import { useEffect, useState } from 'react'
+import Lottie from 'lottie-react'
+
+/**
+ * Lottie (optional) — works great on mobile (SVG/canvas via lottie-web).
+ *
+ * Option A — file in `public/` (e.g. export JSON from LottieFiles → `public/lottie/mobile-gate.json`):
+ *   `MOBILE_GATE_LOTTIE_URL = '/lottie/mobile-gate.json'`
+ *
+ * Option B — bundled with Vite (better caching, no extra fetch):
+ *   `import anim from '../assets/mobile-gate.json'`
+ *   `MOBILE_GATE_LOTTIE_INLINE = anim`
+ *
+ * DotLottie (.lottie): use `@lottiefiles/dotlottie-react` instead, or convert to JSON on LottieFiles.
+ */
+const MOBILE_GATE_LOTTIE_URL: string | null = null
+const MOBILE_GATE_LOTTIE_INLINE: object | null = null
+
+/**
+ * Static image (optional) — PNG/SVG/WebP in `public/` (path starts with `/`).
+ * Used only if no Lottie is configured above.
+ */
+const MOBILE_GATE_ILLUSTRATION_SRC: string | null = null
+
 /** Full-screen gate for narrow viewports — visibility enforced in `index.css` (`.ai-mobile-gate`). */
 export function MobileBlockScreen() {
   return (
@@ -30,7 +54,78 @@ export function MobileBlockScreen() {
   )
 }
 
+const lottieBoxClass =
+  'w-full max-w-[280px] mx-auto max-h-[min(40vh,240px)] drop-shadow-[0_20px_40px_rgba(0,0,0,0.45)]'
+
 function DesktopIllustration() {
+  if (MOBILE_GATE_LOTTIE_INLINE) {
+    return (
+      <Lottie
+        animationData={MOBILE_GATE_LOTTIE_INLINE}
+        loop
+        className={lottieBoxClass}
+        aria-hidden
+      />
+    )
+  }
+
+  if (MOBILE_GATE_LOTTIE_URL) {
+    return <MobileGateLottieFromUrl url={MOBILE_GATE_LOTTIE_URL} />
+  }
+
+  if (MOBILE_GATE_ILLUSTRATION_SRC) {
+    return (
+      <img
+        src={MOBILE_GATE_ILLUSTRATION_SRC}
+        alt=""
+        width={320}
+        height={220}
+        draggable={false}
+        className="w-full h-auto max-h-[min(40vh,220px)] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.45)]"
+        aria-hidden
+      />
+    )
+  }
+
+  return <DefaultDesktopIllustration />
+}
+
+function MobileGateLottieFromUrl({ url }: { url: string }) {
+  const [data, setData] = useState<object | null>(null)
+  const [failed, setFailed] = useState(false)
+
+  useEffect(() => {
+    let cancelled = false
+    setData(null)
+    setFailed(false)
+    fetch(url)
+      .then(r => {
+        if (!r.ok) throw new Error('lottie fetch failed')
+        return r.json()
+      })
+      .then(json => {
+        if (!cancelled) setData(json)
+      })
+      .catch(() => {
+        if (!cancelled) setFailed(true)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [url])
+
+  if (failed) {
+    return <DefaultDesktopIllustration />
+  }
+
+  if (!data) {
+    return <div className={`${lottieBoxClass} min-h-[160px]`} aria-hidden />
+  }
+
+  return <Lottie animationData={data} loop className={lottieBoxClass} aria-hidden />
+}
+
+function DefaultDesktopIllustration() {
   return (
     <svg
       viewBox="0 0 320 220"
@@ -82,3 +177,4 @@ function DesktopIllustration() {
     </svg>
   )
 }
+

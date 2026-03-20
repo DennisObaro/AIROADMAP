@@ -43,6 +43,8 @@ const sourceColors: Record<string, string> = {
   Figma: 'text-rose',
   'UX Planet': 'text-peach',
   Zignuts: 'text-sky',
+  'Codevolution (X)': 'text-sky',
+  'X (@jspujji)': 'text-sky',
 }
 
 export function ArticleCard({ article, isRead, onToggleRead, index }: ArticleCardProps) {
