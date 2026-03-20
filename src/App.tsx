@@ -10,6 +10,7 @@ import { FilterDropdown } from './components/FilterDropdown'
 import { VideoCard } from './components/VideoCard'
 import { ArticleCard } from './components/ArticleCard'
 import { EmptyState } from './components/EmptyState'
+import { MobileBlockScreen } from './components/MobileBlockScreen'
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('videos')
@@ -110,7 +111,9 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-void relative z-10">
+    <>
+      <MobileBlockScreen />
+      <div className="ai-desktop-shell">
       <Sidebar
         activeTab={activeTab}
         onTabChange={handleTabChange}
@@ -278,6 +281,7 @@ export default function App() {
           )}
         </div>
       </main>
-    </div>
+      </div>
+    </>
   )
 }

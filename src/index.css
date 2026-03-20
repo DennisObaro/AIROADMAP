@@ -45,6 +45,59 @@ body {
   position: relative;
 }
 
+/* ── Desktop-only gate (plain CSS: reliable on Vercel / mobile Safari) ── */
+.ai-mobile-gate {
+  display: none !important;
+  position: fixed;
+  inset: 0;
+  z-index: 2147483646;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 0 2rem;
+  background-color: var(--color-void);
+  color: var(--color-text);
+  text-align: center;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ai-desktop-shell {
+  min-height: 100vh;
+  position: relative;
+  z-index: 10;
+  background-color: var(--color-void);
+}
+
+@media (max-width: 767.98px) {
+  .ai-mobile-gate {
+    display: flex !important;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .ai-desktop-shell {
+    display: none !important;
+  }
+
+  html,
+  body {
+    overflow: hidden;
+    height: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .ai-mobile-gate {
+    display: none !important;
+  }
+
+  .ai-desktop-shell {
+    display: block !important;
+  }
+}
+
 /* ── Animations ────────────────────────────────────── */
 @keyframes fade-in-up {
   from { opacity: 0; transform: translateY(8px); }
