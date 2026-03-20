@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { useNarrowViewport } from './hooks/useNarrowViewport'
 import type { ActiveTab, Difficulty } from './types'
 import { categories } from './data/categories'
 import { videos } from './data/videos'
@@ -13,6 +14,7 @@ import { EmptyState } from './components/EmptyState'
 import { MobileBlockScreen } from './components/MobileBlockScreen'
 
 export default function App() {
+  const narrowViewport = useNarrowViewport()
   const [activeTab, setActiveTab] = useState<ActiveTab>('videos')
   const [searchQuery, setSearchQuery] = useState('')
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
@@ -110,10 +112,12 @@ export default function App() {
     )
   }
 
+  if (narrowViewport) {
+    return <MobileBlockScreen />
+  }
+
   return (
-    <>
-      <MobileBlockScreen />
-      <div className="ai-desktop-shell">
+    <div className="ai-desktop-shell min-h-screen bg-void relative z-10">
       <Sidebar
         activeTab={activeTab}
         onTabChange={handleTabChange}
@@ -281,7 +285,6 @@ export default function App() {
           )}
         </div>
       </main>
-      </div>
-    </>
+    </div>
   )
 }
