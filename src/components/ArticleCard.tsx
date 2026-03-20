@@ -14,10 +14,35 @@ const sourceColors: Record<string, string> = {
   'Vercel Docs': 'text-sky',
   'Vercel Blog': 'text-sky',
   'OpenAI Docs': 'text-peach',
+  'OpenAI Blog': 'text-peach',
+  'Google AI Blog': 'text-sky',
   GitHub: 'text-heading',
+  'GitHub Blog': 'text-heading',
   'Figma Blog': 'text-rose',
   'MCP Docs': 'text-accent',
   'Level Up Coding': 'text-amber',
+  'DEV Community': 'text-accent',
+  InfoQ: 'text-amber',
+  'DigitalOcean Community': 'text-sky',
+  'Smashing Magazine': 'text-rose',
+  Awwwards: 'text-peach',
+  'Creative Bloq': 'text-amber',
+  'daily.dev': 'text-accent',
+  'LangChain Blog': 'text-accent',
+  'MIT News AI': 'text-heading',
+  'Reddit UXDesign': 'text-rose',
+  Medium: 'text-amber',
+  'Toools Design': 'text-accent',
+  Muzli: 'text-peach',
+  'Veza Digital': 'text-sky',
+  B12: 'text-accent',
+  Komposo: 'text-amber',
+  Grazitti: 'text-sky',
+  Prototypr: 'text-rose',
+  'UX Pilot': 'text-accent',
+  Figma: 'text-rose',
+  'UX Planet': 'text-peach',
+  Zignuts: 'text-sky',
 }
 
 export function ArticleCard({ article, isRead, onToggleRead, index }: ArticleCardProps) {
@@ -25,15 +50,13 @@ export function ArticleCard({ article, isRead, onToggleRead, index }: ArticleCar
   const sourceColor = sourceColors[article.source] || 'text-muted'
 
   return (
-    <div className={`group animate-fade-in-up ${staggerClass}`}>
+    <div className={`group animate-fade-in-up h-full ${staggerClass}`}>
       <div
-        className={`relative bg-surface-raised rounded-2xl p-5 transition-colors duration-150 ${
+        className={`relative bg-surface-raised rounded-2xl p-5 transition-colors duration-150 h-full flex flex-col ${
           isRead ? 'border border-accent/20' : 'border border-border hover:border-border-bright'
         }`}
       >
-        <div className={`absolute left-0 top-4 bottom-4 w-[2px] rounded-r-full transition-colors duration-150 ${isRead ? 'bg-accent/40' : 'bg-border-bright group-hover:bg-muted/30'}`} />
-
-        <div className="pl-3">
+        <div className="h-full flex flex-col">
           <div className="flex items-start justify-between gap-3 mb-3">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2.5">
@@ -79,7 +102,7 @@ export function ArticleCard({ article, isRead, onToggleRead, index }: ArticleCar
 
           <p className="text-[12px] text-muted leading-relaxed mb-4">{article.description}</p>
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mt-auto">
             <div className="flex gap-1.5 flex-wrap">
               {article.tags.slice(0, 3).map(tag => (
                 <span key={tag} className="text-[9px] font-mono text-muted/60 bg-surface-hover px-2 py-0.5 rounded-md">

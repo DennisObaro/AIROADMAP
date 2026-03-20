@@ -38,17 +38,6 @@ export const videos: Video[] = [
     description: 'Five fundamental skills: thinking, frameworks, checkpoints, debugging, and context for vibe coding.',
   },
   {
-    id: 'v-4',
-    title: 'The "Vibe Coding" Mind Virus Explained',
-    youtubeId: 'J0Bg_YGDLBY',
-    channel: 'Fireship',
-    duration: '8:21',
-    categoryId: 'foundations',
-    difficulty: 'beginner',
-    tags: ['vibe-coding', 'philosophy', 'trends'],
-    description: 'What the vibe coding movement is, why it matters, and how it changes software development forever.',
-  },
-  {
     id: 'v-5',
     title: 'How to Build Any App with AI & No Coding',
     youtubeId: 'l-pf7Q5iFxM',

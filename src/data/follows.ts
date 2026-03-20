@@ -7,6 +7,94 @@ export interface XProfile {
 }
 
 export const xProfiles: XProfile[] = [
+  // Core AI leaders
+  {
+    handle: 'karpathy',
+    name: 'Andrej Karpathy',
+    bio: 'AI researcher, former Tesla AI director. Building toward AGI.',
+    avatar: 'https://unavatar.io/x/karpathy',
+    url: 'https://x.com/karpathy',
+  },
+  {
+    handle: 'lexfridman',
+    name: 'Lex Fridman',
+    bio: 'AI researcher, podcast host. Conversations on AI, science, and the future.',
+    avatar: 'https://unavatar.io/x/lexfridman',
+    url: 'https://x.com/lexfridman',
+  },
+  {
+    handle: 'sama',
+    name: 'Sam Altman',
+    bio: 'CEO of OpenAI. Building safe, beneficial AGI.',
+    avatar: 'https://unavatar.io/x/sama',
+    url: 'https://x.com/sama',
+  },
+  {
+    handle: 'ylecun',
+    name: 'Yann LeCun',
+    bio: 'Chief AI Scientist at Meta. Pioneering deep learning and AI research.',
+    avatar: 'https://unavatar.io/x/ylecun',
+    url: 'https://x.com/ylecun',
+  },
+  // AI + Design / UX specialists
+  {
+    handle: 'jasonzhou1993',
+    name: 'Jason Zhou',
+    bio: 'AI design agents and full generative workflows. At the forefront of AI-driven design.',
+    avatar: 'https://unavatar.io/x/jasonzhou1993',
+    url: 'https://x.com/jasonzhou1993',
+  },
+  {
+    handle: 'AdamFard_',
+    name: 'Adam Fard',
+    bio: 'UX Pilot AI. The future of design tools and AI-native workflows.',
+    avatar: 'https://unavatar.io/x/AdamFard_',
+    url: 'https://x.com/AdamFard_',
+  },
+  {
+    handle: 'ridd_design',
+    name: 'Ridd',
+    bio: 'AI design patterns and design systems. Building the next generation of interfaces.',
+    avatar: 'https://unavatar.io/x/ridd_design',
+    url: 'https://x.com/ridd_design',
+  },
+  {
+    handle: 'luk_designer',
+    name: 'Luk',
+    bio: 'AI-native web products. Design and development at the intersection of AI.',
+    avatar: 'https://unavatar.io/x/luk_designer',
+    url: 'https://x.com/luk_designer',
+  },
+  {
+    handle: 'darshitap07',
+    name: 'Darshita',
+    bio: 'Visual and product design in AI. Exploring generative workflows.',
+    avatar: 'https://unavatar.io/x/darshitap07',
+    url: 'https://x.com/darshitap07',
+  },
+  // AI news, tools & applications
+  {
+    handle: 'rowancheung',
+    name: 'Rowan Cheung',
+    bio: 'AI news and tools. Curating the latest in AI for builders.',
+    avatar: 'https://unavatar.io/x/rowancheung',
+    url: 'https://x.com/rowancheung',
+  },
+  {
+    handle: 'mattshumer_',
+    name: 'Matt Shumer',
+    bio: 'AI agents and interfaces. Building the future of human-AI interaction.',
+    avatar: 'https://unavatar.io/x/mattshumer_',
+    url: 'https://x.com/mattshumer_',
+  },
+  {
+    handle: 'alliekmiller',
+    name: 'Allie K. Miller',
+    bio: 'AI business and applications. Enterprise AI, startups, and adoption.',
+    avatar: 'https://unavatar.io/x/alliekmiller',
+    url: 'https://x.com/alliekmiller',
+  },
+  // Tools & community
   {
     handle: 'cursor_ai',
     name: 'Cursor',

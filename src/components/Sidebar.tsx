@@ -2,6 +2,7 @@ import type { ActiveTab } from '../types'
 import type { ReactNode } from 'react'
 import { useState } from 'react'
 import { xProfiles } from '../data/follows'
+import { aiTools } from '../data/tools'
 
 interface SidebarProps {
   activeTab: ActiveTab
@@ -70,6 +71,7 @@ function ProfileAvatar({ src, name }: { src: string; name: string }) {
 
 export function Sidebar({ activeTab, onTabChange, videosCount, articlesCount, watchedCount }: SidebarProps) {
   const [followOpen, setFollowOpen] = useState(false)
+  const [toolsOpen, setToolsOpen] = useState(false)
 
   const counts: Record<ActiveTab, number> = {
     videos: videosCount,
@@ -111,9 +113,6 @@ export function Sidebar({ activeTab, onTabChange, videosCount, articlesCount, wa
                     : 'text-muted hover:text-text hover:bg-surface-hover'
                 }`}
               >
-                {isActive && (
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-4 rounded-r-full bg-accent" />
-                )}
                 <span className={`transition-colors ${isActive ? 'text-heading' : 'text-muted group-hover:text-text'}`}>
                   {tab.icon}
                 </span>
@@ -138,6 +137,25 @@ export function Sidebar({ activeTab, onTabChange, videosCount, articlesCount, wa
               <path d="M10.53 2H12.47L8.4 6.66L13.22 13H9.52L6.78 9.38L3.65 13H1.71L6.07 8L1.43 2H5.22L7.68 5.3L10.53 2ZM9.92 11.86H10.92L4.78 3.02H3.7L9.92 11.86Z" fill="currentColor" />
             </svg>
             <span className="flex-1 text-left">Follow on X</span>
+            <span className="text-muted/40">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M5 3L9 7L5 11" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+          </button>
+
+          {/* Tools trigger */}
+          <button
+            onClick={() => setToolsOpen(true)}
+            className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-[13px] font-medium text-muted hover:text-text hover:bg-surface-hover transition-colors duration-150 cursor-pointer"
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="text-muted">
+              <path d="M7.5 2.5H4A1.5 1.5 0 0 0 2.5 4v3.5a1.5 1.5 0 0 0 1.5 1.5h3.5a1.5 1.5 0 0 0 1.5-1.5V4A1.5 1.5 0 0 0 7.5 2.5Z" stroke="currentColor" strokeWidth="1.3" />
+              <path d="M14 2.5h-3.5a1.5 1.5 0 0 0-1.5 1.5v3.5a1.5 1.5 0 0 0 1.5 1.5H14a1.5 1.5 0 0 0 1.5-1.5V4A1.5 1.5 0 0 0 14 2.5Z" stroke="currentColor" strokeWidth="1.3" />
+              <path d="M7.5 10.5H4A1.5 1.5 0 0 0 2.5 12v3.5a1.5 1.5 0 0 0 1.5 1.5h3.5a1.5 1.5 0 0 0 1.5-1.5V12a1.5 1.5 0 0 0-1.5-1.5Z" stroke="currentColor" strokeWidth="1.3" />
+              <path d="M14 10.5h-3.5a1.5 1.5 0 0 0-1.5 1.5v3.5a1.5 1.5 0 0 0 1.5 1.5H14a1.5 1.5 0 0 0 1.5-1.5V12a1.5 1.5 0 0 0-1.5-1.5Z" stroke="currentColor" strokeWidth="1.3" />
+            </svg>
+            <span className="flex-1 text-left">Tools</span>
             <span className="text-muted/40">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path d="M5 3L9 7L5 11" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
@@ -202,6 +220,47 @@ export function Sidebar({ activeTab, onTabChange, videosCount, articlesCount, wa
                     <p className="text-[10px] text-muted/50 font-mono">@{profile.handle}</p>
                     <p className="text-[11px] text-muted leading-snug mt-1.5">{profile.bio}</p>
                   </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Tools panel */}
+      {toolsOpen && (
+        <div className="fixed inset-0 z-[60]" onClick={() => setToolsOpen(false)}>
+          <div className="absolute inset-0 bg-black/40" />
+          <div
+            className="absolute left-[272px] top-0 bottom-0 w-[300px] bg-surface border-r border-border flex flex-col"
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-5 pt-6 pb-4">
+              <h2 className="text-[15px] font-display font-bold text-heading">AI Tools</h2>
+              <button
+                onClick={() => setToolsOpen(false)}
+                className="w-7 h-7 rounded-lg flex items-center justify-center text-muted hover:text-text hover:bg-surface-hover transition-colors cursor-pointer"
+              >
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M3 3L11 11M11 3L3 11" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                </svg>
+              </button>
+            </div>
+            <div className="mx-5 h-px bg-border" />
+            <div className="flex-1 overflow-y-auto px-3 py-3 space-y-0.5">
+              {aiTools.map(tool => (
+                <a
+                  key={tool.id}
+                  href={tool.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col gap-1 px-3 py-3 rounded-xl hover:bg-surface-hover transition-colors group"
+                >
+                  <span className="text-[13px] font-semibold text-heading group-hover:text-accent transition-colors">{tool.name}</span>
+                  <p className="text-[11px] text-muted leading-snug">{tool.description}</p>
+                  {tool.platform && (
+                    <p className="text-[10px] text-muted/50 font-mono">{tool.platform}</p>
+                  )}
                 </a>
               ))}
             </div>
