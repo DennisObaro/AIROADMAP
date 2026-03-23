@@ -13,6 +13,19 @@ import { ArticleCard } from './components/ArticleCard'
 import { EmptyState } from './components/EmptyState'
 import { MobileBlockScreen } from './components/MobileBlockScreen'
 
+const BEGINNER_CLAUDE_VIDEO_IDS = [
+  'v-19',
+  'v-6',
+  'v-10',
+  'v-32',
+  'v-36',
+  'v-20',
+  'v-21',
+  'v-22',
+  'v-23',
+  'v-34',
+]
+
 export default function App() {
   const narrowViewport = useNarrowViewport()
   const [activeTab, setActiveTab] = useState<ActiveTab>('videos')
@@ -21,12 +34,18 @@ export default function App() {
   const [activeDifficulty, setActiveDifficulty] = useState<Difficulty | null>(null)
   const { watchedVideos, readArticles, toggleVideoWatched, toggleArticleRead } = useProgress()
 
-  const watchedCount = watchedVideos.size + readArticles.size
-
   const filteredVideos = useMemo(() => {
     let result = videos
+    if (activeDifficulty === 'beginner') {
+      const orderMap = new Map(BEGINNER_CLAUDE_VIDEO_IDS.map((id, index) => [id, index]))
+      result = videos
+        .filter(video => orderMap.has(video.id))
+        .sort((a, b) => (orderMap.get(a.id) ?? Number.MAX_SAFE_INTEGER) - (orderMap.get(b.id) ?? Number.MAX_SAFE_INTEGER))
+    } else if (activeDifficulty) {
+      result = result.filter(v => v.difficulty === activeDifficulty)
+    }
+
     if (activeCategory) result = result.filter(v => v.categoryId === activeCategory)
-    if (activeDifficulty) result = result.filter(v => v.difficulty === activeDifficulty)
     if (searchQuery) {
       const q = searchQuery.toLowerCase()
       result = result.filter(
@@ -56,6 +75,11 @@ export default function App() {
     }
     return result
   }, [activeCategory, activeDifficulty, searchQuery])
+
+  const watchedCount = useMemo(
+    () => filteredVideos.filter(video => watchedVideos.has(video.id)).length + filteredArticles.filter(article => readArticles.has(article.id)).length,
+    [filteredVideos, filteredArticles, watchedVideos, readArticles]
+  )
 
   const completedVideos = useMemo(() => videos.filter(v => watchedVideos.has(v.id)), [watchedVideos])
   const completedArticles = useMemo(() => articles.filter(a => readArticles.has(a.id)), [readArticles])
@@ -121,8 +145,8 @@ export default function App() {
       <Sidebar
         activeTab={activeTab}
         onTabChange={handleTabChange}
-        videosCount={videos.length}
-        articlesCount={articles.length}
+        videosCount={filteredVideos.length}
+        articlesCount={filteredArticles.length}
         watchedCount={watchedCount}
       />
 

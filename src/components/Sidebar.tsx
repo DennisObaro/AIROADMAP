@@ -1,6 +1,7 @@
 import type { ActiveTab } from '../types'
 import type { ReactNode } from 'react'
 import { useState } from 'react'
+import { UserButton } from '@clerk/clerk-react'
 import { xProfiles } from '../data/follows'
 import { aiTools } from '../data/tools'
 
@@ -79,7 +80,8 @@ export function Sidebar({ activeTab, onTabChange, videosCount, articlesCount, wa
     watched: watchedCount,
   }
 
-  const pct = Math.round((watchedCount / (videosCount + articlesCount)) * 100)
+  const totalCount = videosCount + articlesCount
+  const pct = totalCount > 0 ? Math.round((watchedCount / totalCount) * 100) : 0
 
   return (
     <>
@@ -90,10 +92,19 @@ export function Sidebar({ activeTab, onTabChange, videosCount, articlesCount, wa
             <div className="w-10 h-10 rounded-xl bg-surface-raised flex items-center justify-center border border-border">
               <span className="text-accent font-bold text-[13px] font-mono tracking-tight">AI</span>
             </div>
-            <div>
+            <div className="min-w-0 flex-1">
               <h1 className="text-heading font-display font-bold text-[16px] tracking-tight leading-none">AI Roadmap</h1>
               <p className="text-muted text-[10px] font-mono tracking-[0.14em] uppercase mt-1">Learn · Build · Ship</p>
             </div>
+            <UserButton
+              afterSignOutUrl="/"
+              appearance={{
+                elements: {
+                  avatarBox: 'w-9 h-9 ring-1 ring-border',
+                  userButtonPopoverCard: 'border border-border bg-surface-raised',
+                },
+              }}
+            />
           </div>
         </div>
 
@@ -170,7 +181,7 @@ export function Sidebar({ activeTab, onTabChange, videosCount, articlesCount, wa
             <p className="text-[10px] font-mono text-muted uppercase tracking-[0.15em] mb-3">Your Progress</p>
             <div className="flex items-baseline gap-1.5">
               <span className="text-3xl font-display font-bold text-heading tabular-nums">{watchedCount}</span>
-              <span className="text-muted text-sm font-mono">/ {videosCount + articlesCount}</span>
+              <span className="text-muted text-sm font-mono">/ {totalCount}</span>
             </div>
             <div className="mt-4 h-1.5 bg-void rounded-full overflow-hidden">
               <div
