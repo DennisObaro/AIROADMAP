@@ -1,4 +1,5 @@
 import { ClerkProvider, SignedIn, SignedOut } from '@clerk/clerk-react'
+import { clerkAppearance } from './clerkAppearance'
 import App from './App'
 import { LoginScreen } from './components/LoginScreen'
 import { MissingClerkKeyScreen } from './components/MissingClerkKeyScreen'
@@ -16,6 +17,7 @@ export default function Root() {
       afterSignOutUrl="/"
       signInFallbackRedirectUrl="/"
       signUpFallbackRedirectUrl="/"
+      appearance={clerkAppearance}
     >
       <SignedOut>
         <LoginScreen />

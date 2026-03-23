@@ -4,14 +4,14 @@ export const articles: Article[] = [
   // === FOUNDATIONS ===
   {
     id: 'a-1',
-    title: 'The Complete Guide to AI-Assisted Development',
-    url: 'https://www.builder.io/blog/ai-assisted-development',
-    source: 'Builder.io',
-    readTime: '12 min',
+    title: 'Do this before starting Vibecoding your Next App Project',
+    url: 'https://medium.com/@codewithraj/do-this-before-starting-vibecoding-your-next-app-project-6b4f87c502cb',
+    source: 'Medium · Raj Jani',
+    readTime: '3 min',
     categoryId: 'foundations',
     difficulty: 'beginner',
-    tags: ['overview', 'ai-coding', 'guide'],
-    description: 'Comprehensive overview of how AI is transforming the software development process.',
+    tags: ['vibe-coding', 'prd', 'planning', 'beginner'],
+    description: 'Why you shouldn’t jump straight into “build my app” prompts — plan with a PRD-style prompt first for more production-ready, secure results.',
   },
   {
     id: 'a-2',

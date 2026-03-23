@@ -13,34 +13,8 @@ export function LoginScreen() {
       </div>
 
       <div className="w-full max-w-[420px] [&_.cl-card]:shadow-none [&_.cl-card]:border-border [&_.cl-card]:bg-surface-raised">
-        <SignIn
-          fallbackRedirectUrl="/"
-          signUpFallbackRedirectUrl="/"
-          appearance={{
-            variables: {
-              colorPrimary: '#5E6AD2',
-              colorBackground: '#151515',
-              colorInputBackground: '#1A1A1A',
-              colorInputText: '#E6EAF0',
-              colorText: '#9BA3AF',
-              colorTextSecondary: '#6B7280',
-              colorDanger: '#E5484D',
-              colorSuccess: '#50C878',
-              colorWarning: '#D4A04E',
-              borderRadius: '0.75rem',
-              fontFamily: 'var(--font-body), system-ui, sans-serif',
-            },
-            elements: {
-              card: 'border border-border rounded-xl',
-              headerTitle: 'font-display text-heading',
-              headerSubtitle: 'text-muted',
-              socialButtonsBlockButton: 'border-border bg-surface-hover hover:bg-surface-raised',
-              formButtonPrimary: 'bg-accent hover:bg-accent-dim',
-              footerActionLink: 'text-accent hover:text-accent-dim',
-              identityPreviewEditButton: 'text-accent',
-            },
-          }}
-        />
+        {/* Appearance comes from ClerkProvider (clerkAppearance.ts) — includes @clerk/themes dark for OAuth label contrast */}
+        <SignIn fallbackRedirectUrl="/" signUpFallbackRedirectUrl="/" />
       </div>
     </div>
   )
