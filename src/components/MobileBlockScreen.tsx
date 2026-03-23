@@ -47,7 +47,7 @@ export function MobileBlockScreen() {
           My guy try desktop
         </h1>
         <p className="text-[13px] text-muted font-mono leading-relaxed">
-          AI Roadmap is laid out for keyboard-wide screens. Open this on a laptop or desktop.
+          StackAI is laid out for keyboard-wide screens. Open this on a laptop or desktop.
         </p>
       </div>
     </div>

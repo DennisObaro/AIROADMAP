@@ -1,4 +1,4 @@
-# AI Roadmap
+# StackAI
 
 Curated YouTube videos and articles for learning AI-assisted development — desktop-first UI.
 
@@ -15,16 +15,16 @@ Open **http://localhost:5173**
 
 ## Authentication
 
-The app is gated behind **Clerk**. Users must sign in before using the roadmap.
+The app is gated behind **Clerk**. Users must sign in before using StackAI.
 
 1. Create an application at [Clerk Dashboard](https://dashboard.clerk.com).
 2. Under **API Keys**, copy the **Publishable key**.
 3. Set `VITE_CLERK_PUBLISHABLE_KEY` in `.env` (local) or in your **Vercel** project → **Settings** → **Environment Variables** (production).
 4. In Clerk → **Paths**, set sign-in/sign-up URLs as needed; allow your local URL (`http://localhost:5173`) and production URL under **Allowed origins**.
 
-If the key is missing, the app shows setup instructions instead of the roadmap.
+If the key is missing, the app shows setup instructions instead of the app.
 
-**Production domain in Clerk:** In [Clerk Dashboard](https://dashboard.clerk.com) → your app → **Domains** (or **Paths** / allowed origins), add your live URL (e.g. `https://airoadmap-one.vercel.app`) so sign-in works on Vercel.
+**Production domain in Clerk:** In [Clerk Dashboard](https://dashboard.clerk.com) → your app → **Domains** (or **Paths** / allowed origins), add your live Vercel URL so sign-in works in production.
 
 If the site still looks like the old version (no sign-in / no account button), do a **hard refresh** (Cmd+Shift+R) or open in an **Incognito** window — the browser or CDN may have cached an older `index.html` or JS bundle.
 

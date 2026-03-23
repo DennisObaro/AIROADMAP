@@ -6,11 +6,11 @@ export function LoginScreen() {
       <div className="w-full max-w-md mb-10 text-center">
         <div className="flex items-center justify-center gap-3.5 mb-3">
           <div className="w-10 h-10 rounded-xl bg-surface-raised flex items-center justify-center border border-border">
-            <span className="text-accent font-bold text-[13px] font-mono tracking-tight">AI</span>
+            <span className="text-accent font-bold text-[11px] font-mono tracking-tight">SA</span>
           </div>
-          <h1 className="text-heading font-display font-bold text-[20px] tracking-tight">AI Roadmap</h1>
+          <h1 className="text-heading font-display font-bold text-[20px] tracking-tight">StackAI</h1>
         </div>
-        <p className="text-muted text-[13px] font-mono tracking-wide uppercase">Sign in to access your roadmap</p>
+        <p className="text-muted text-[13px] font-mono tracking-wide uppercase">Sign in to continue</p>
       </div>
 
       <div className="w-full max-w-[420px] [&_.cl-card]:shadow-none [&_.cl-card]:border-border [&_.cl-card]:bg-surface-raised">

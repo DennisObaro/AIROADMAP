@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react'
 
-const STORAGE_KEY = 'ai-roadmap-progress'
+const STORAGE_KEY = 'stackai-progress'
 
 interface StoredProgress {
   watchedVideos: string[]

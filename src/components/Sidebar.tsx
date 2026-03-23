@@ -89,10 +89,10 @@ export function Sidebar({ activeTab, onTabChange, videosCount, articlesCount, wa
         <div className="px-6 pt-7 pb-5">
           <div className="flex items-center gap-3.5">
             <div className="w-10 h-10 rounded-xl bg-surface-raised flex items-center justify-center border border-border">
-              <span className="text-accent font-bold text-[13px] font-mono tracking-tight">AI</span>
+              <span className="text-accent font-bold text-[11px] font-mono tracking-tight">SA</span>
             </div>
             <div className="min-w-0 flex-1">
-              <h1 className="text-heading font-display font-bold text-[16px] tracking-tight leading-none">AI Roadmap</h1>
+              <h1 className="text-heading font-display font-bold text-[16px] tracking-tight leading-none">StackAI</h1>
               <p className="text-muted text-[10px] font-mono tracking-[0.14em] uppercase mt-1">Learn · Build · Ship</p>
             </div>
           </div>
@@ -237,7 +237,7 @@ export function Sidebar({ activeTab, onTabChange, videosCount, articlesCount, wa
             onClick={e => e.stopPropagation()}
           >
             <div className="flex items-center justify-between px-5 pt-6 pb-4">
-              <h2 className="text-[15px] font-display font-bold text-heading">AI Tools</h2>
+              <h2 className="text-[15px] font-display font-bold text-heading">StackAI tools</h2>
               <button
                 onClick={() => setToolsOpen(false)}
                 className="w-7 h-7 rounded-lg flex items-center justify-center text-muted hover:text-text hover:bg-surface-hover transition-colors cursor-pointer"

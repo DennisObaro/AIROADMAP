@@ -21,7 +21,7 @@ async function checkUrl(url) {
   const controller = new AbortController()
   const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS)
   const headers = {
-    'user-agent': 'AIRoadmapLinkValidator/1.0 (+https://localhost)',
+    'user-agent': 'StackAILinkValidator/1.0 (+https://localhost)',
   }
 
   try {
