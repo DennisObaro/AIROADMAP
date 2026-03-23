@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { UserButton } from '@clerk/clerk-react'
 import { useNarrowViewport } from './hooks/useNarrowViewport'
 import type { ActiveTab, Difficulty } from './types'
 import { categories } from './data/categories'
@@ -154,11 +155,25 @@ export default function App() {
         {/* Sticky header */}
         <header className="sticky top-0 z-40 bg-void/80 backdrop-blur-xl border-b border-border">
           <div className="max-w-[1200px] mx-auto px-8 pt-7 pb-5">
-            <div className="mb-5">
-              <h2 className="text-[26px] font-display font-bold text-heading tracking-tight leading-none">
-                {tabTitles[activeTab]}
-              </h2>
-              <p className="text-[13px] text-muted mt-2">{tabDescriptions[activeTab]}</p>
+            <div className="mb-5 flex flex-wrap items-start justify-between gap-4">
+              <div className="min-w-0">
+                <h2 className="text-[26px] font-display font-bold text-heading tracking-tight leading-none">
+                  {tabTitles[activeTab]}
+                </h2>
+                <p className="text-[13px] text-muted mt-2">{tabDescriptions[activeTab]}</p>
+              </div>
+              <div className="shrink-0 flex items-center gap-2 pt-0.5" title="Account">
+                <UserButton
+                  afterSignOutUrl="/"
+                  appearance={{
+                    elements: {
+                      avatarBox: 'w-10 h-10 ring-1 ring-border rounded-full',
+                      userButtonPopoverCard: 'border border-border bg-surface-raised',
+                      userButtonTrigger: 'rounded-full focus:shadow-none focus:ring-2 focus:ring-accent/40',
+                    },
+                  }}
+                />
+              </div>
             </div>
             {activeTab !== 'watched' && (
               <div className="flex items-center gap-3">

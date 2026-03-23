@@ -3,7 +3,7 @@ import App from './App'
 import { LoginScreen } from './components/LoginScreen'
 import { MissingClerkKeyScreen } from './components/MissingClerkKeyScreen'
 
-const publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+const publishableKey = String(import.meta.env.VITE_CLERK_PUBLISHABLE_KEY ?? '').trim()
 
 export default function Root() {
   if (!publishableKey) {
@@ -11,7 +11,12 @@ export default function Root() {
   }
 
   return (
-    <ClerkProvider publishableKey={publishableKey} afterSignOutUrl="/">
+    <ClerkProvider
+      publishableKey={publishableKey}
+      afterSignOutUrl="/"
+      signInFallbackRedirectUrl="/"
+      signUpFallbackRedirectUrl="/"
+    >
       <SignedOut>
         <LoginScreen />
       </SignedOut>

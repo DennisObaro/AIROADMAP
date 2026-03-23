@@ -1,7 +1,6 @@
 import type { ActiveTab } from '../types'
 import type { ReactNode } from 'react'
 import { useState } from 'react'
-import { UserButton } from '@clerk/clerk-react'
 import { xProfiles } from '../data/follows'
 import { aiTools } from '../data/tools'
 
@@ -96,15 +95,6 @@ export function Sidebar({ activeTab, onTabChange, videosCount, articlesCount, wa
               <h1 className="text-heading font-display font-bold text-[16px] tracking-tight leading-none">AI Roadmap</h1>
               <p className="text-muted text-[10px] font-mono tracking-[0.14em] uppercase mt-1">Learn · Build · Ship</p>
             </div>
-            <UserButton
-              afterSignOutUrl="/"
-              appearance={{
-                elements: {
-                  avatarBox: 'w-9 h-9 ring-1 ring-border',
-                  userButtonPopoverCard: 'border border-border bg-surface-raised',
-                },
-              }}
-            />
           </div>
         </div>
 

@@ -24,6 +24,10 @@ The app is gated behind **Clerk**. Users must sign in before using the roadmap.
 
 If the key is missing, the app shows setup instructions instead of the roadmap.
 
+**Production domain in Clerk:** In [Clerk Dashboard](https://dashboard.clerk.com) → your app → **Domains** (or **Paths** / allowed origins), add your live URL (e.g. `https://airoadmap-one.vercel.app`) so sign-in works on Vercel.
+
+If the site still looks like the old version (no sign-in / no account button), do a **hard refresh** (Cmd+Shift+R) or open in an **Incognito** window — the browser or CDN may have cached an older `index.html` or JS bundle.
+
 ## Production build
 
 ```bash
