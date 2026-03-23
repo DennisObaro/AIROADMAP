@@ -1,6 +1,7 @@
 import type { ActiveTab } from '../types'
 import type { ReactNode } from 'react'
 import { useState } from 'react'
+import { AppLogo } from './AppLogo'
 import { xProfiles } from '../data/follows'
 import { aiTools } from '../data/tools'
 
@@ -88,9 +89,7 @@ export function Sidebar({ activeTab, onTabChange, videosCount, articlesCount, wa
         {/* Brand */}
         <div className="px-6 pt-7 pb-5">
           <div className="flex items-center gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-surface-raised flex items-center justify-center border border-border">
-              <span className="text-accent font-bold text-[11px] font-mono tracking-tight">SA</span>
-            </div>
+            <AppLogo />
             <div className="min-w-0 flex-1">
               <h1 className="text-heading font-display font-bold text-[16px] tracking-tight leading-none">StackAI</h1>
               <p className="text-muted text-[10px] font-mono tracking-[0.14em] uppercase mt-1">Learn · Build · Ship</p>

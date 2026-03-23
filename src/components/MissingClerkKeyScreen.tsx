@@ -1,8 +1,10 @@
+import { AppLogo } from './AppLogo'
+
 export function MissingClerkKeyScreen() {
   return (
     <div className="min-h-screen bg-void flex flex-col items-center justify-center px-6 py-12 text-center max-w-lg mx-auto">
-      <div className="w-10 h-10 rounded-xl bg-surface-raised flex items-center justify-center border border-border mb-6">
-        <span className="text-accent font-bold text-[11px] font-mono">SA</span>
+      <div className="mb-6">
+        <AppLogo />
       </div>
       <h1 className="text-heading font-display font-bold text-xl mb-3">Authentication not configured</h1>
       <p className="text-muted text-sm leading-relaxed mb-6">
